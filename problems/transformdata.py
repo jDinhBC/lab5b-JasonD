@@ -34,7 +34,7 @@ class TransformData():
             'Tyler Johnson', 'John Wall', 'Jeff Teague', 'George Hill',
             'Klay Thompson', 'Enes Kanter', 'Wesley Matthews'
         ]
-        self.salarie = [
+        self.salary = [
             37457154, 35654150, 35654150, 35650150, 32088932, 31214295,
             31200000, 30560700, 30521115, 30000000, 29230769, 28928709,
             27977689, 27739975, 26011913, 25976111, 25759766, 25467250,
@@ -60,7 +60,7 @@ class TransformData():
         a name, salary, and position.
         """
         with open('nba.txt', 'w') as nba_file:
-            for num, sal, pos in zip(self.names, self.salarie, self.position):
+            for num, sal, pos in zip(self.names, self.salary, self.position):
                 nsp_row = num + ',' + str(sal) + ',' + pos + '\n'
                 nba_file.write(nsp_row)
 
@@ -83,23 +83,24 @@ class TransformData():
             posnamedict[pos].sort()
         return posnamedict
 
-    def most_played_position(self):
-        """
-        Uses dictionary created from names_by_pos to create a new dictionary
-        whose keys are positions and the values are the length of lists
-        of the players for each position.
-        input = dictionary
-            key = position
-            value = list of names
-        returns dictionary
-            key = positions
-            value = length of lists of names
-        """
-        input = TransformData().names_by_pos()
-        numposdict = {}
-        for key in input:
-            numposdict[key] = len(input[key])
-        return numposdict
+
+def most_played_position():
+    """
+    Uses dictionary created from names_by_pos to create a new dictionary
+    whose keys are positions and the values are the length of lists
+    of the players for each position.
+    input = dictionary
+        key = position
+        value = list of names
+    returns dictionary
+        key = positions
+        value = length of lists of names
+    """
+    inputdata = TransformData().names_by_pos()
+    numposdict = {}
+    for key in inputdata:
+        numposdict[key] = len(inputdata[key])
+    return numposdict
 
 
 def main():
@@ -109,7 +110,7 @@ def main():
     transd = TransformData()
     transd.record_per_row()
     transd.names_by_pos()
-    transd.most_played_position()
+    most_played_position()
 
 
 if __name__ == '__main__':
