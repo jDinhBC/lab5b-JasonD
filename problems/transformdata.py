@@ -67,18 +67,33 @@ class TransformData():
     def names_by_pos(self):
         """
         Returns a dictionary whose keys are the positions and values
-        are lists of the names corresponding to each position
+        are lists of the names corresponding to each position.
+
+        input = list of positions, list of names... lists corresponds to e/o.
+        returns dictionary
+            key = positions
+            value = list of names
         """
+        posnamedict = {}
+        for pos, name in zip(self.position, self.names):
+            if pos in posnamedict:
+                posnamedict[pos].append(name)
+            else:
+                posnamedict[pos] = []
+            posnamedict[pos].sort()
+        return posnamedict
 
     def most_played_position(self):
         """
-        Calls names_by_pos(self) method to have a dictionary whos keys are the
-        positions and values are lists of the
-        names corresponding to each position.
-
-        Uses that dictionary to create a new dictionary whose keys are
-        positions and the values are the length of lists
+        Uses dictionary created from names_by_pos to create a new dictionary
+        whose keys are positions and the values are the length of lists
         of the players for each position.
+        input = dictionary
+            key = position
+            value = list of names
+        returns dictionary
+            key = positions
+            value = length of lists of names
         """
 
 
@@ -88,6 +103,8 @@ def main():
     """
     transd = TransformData()
     transd.record_per_row()
+    transd.names_by_pos()
+    #transd.most_played_position()
 
 
 if __name__ == '__main__':
