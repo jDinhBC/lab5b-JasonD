@@ -79,7 +79,7 @@ class TransformData():
             if pos in posnamedict:
                 posnamedict[pos].append(name)
             else:
-                posnamedict[pos] = []
+                posnamedict[pos] = [name]
             posnamedict[pos].sort()
         return posnamedict
 
