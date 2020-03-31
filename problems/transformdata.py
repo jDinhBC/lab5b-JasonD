@@ -95,6 +95,11 @@ class TransformData():
             key = positions
             value = length of lists of names
         """
+        input = TransformData().names_by_pos()
+        numposdict = {}
+        for key in input:
+            numposdict[key] = len(input[key])
+        return numposdict
 
 
 def main():
@@ -104,7 +109,7 @@ def main():
     transd = TransformData()
     transd.record_per_row()
     transd.names_by_pos()
-    #transd.most_played_position()
+    transd.most_played_position()
 
 
 if __name__ == '__main__':
