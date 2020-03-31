@@ -3,7 +3,7 @@ dataset.py
 Mihaela
 March 11, 2020
 """
-import csv
+
 
 class TransformData():
     """
@@ -34,7 +34,7 @@ class TransformData():
             'Tyler Johnson', 'John Wall', 'Jeff Teague', 'George Hill',
             'Klay Thompson', 'Enes Kanter', 'Wesley Matthews'
         ]
-        self.salaries = [
+        self.salarie = [
             37457154, 35654150, 35654150, 35650150, 32088932, 31214295,
             31200000, 30560700, 30521115, 30000000, 29230769, 28928709,
             27977689, 27739975, 26011913, 25976111, 25759766, 25467250,
@@ -45,14 +45,13 @@ class TransformData():
             19500000, 19245370, 19169800, 19000000, 19000000, 18988725,
             18622514, 18622514
         ]
-        self.positions = [
+        self.position = [
             'PG', 'PG', 'PG', 'PG', 'PF', 'SF', 'PG', 'SF', 'PG', 'SF', 'PF',
             'PF', 'PG', 'SG', 'SF', 'PG', 'SG', 'PF', 'SF', 'SG', 'PF', 'C',
             'C', 'C', 'PF', 'C', 'PF', 'SF', 'SF', 'SG', 'C', 'SF', 'C', 'PF',
             'PF', 'PF', 'SF', 'SG', 'SG', 'PF', 'PG', 'PF', 'PG', 'SG', 'PG',
             'PG', 'PG', 'SG', 'C', 'SG'
         ]
-
 
     def record_per_row(self):
         """
@@ -61,10 +60,35 @@ class TransformData():
         a name, salary, and position.
         """
         with open('nba.txt', 'w') as nba_file:
-            for n, s, p in zip(self.names, self.salaries, self.positions):
-                nsp_row = n + ',' + str(s) +',' + p + '\n'
+            for num, sal, pos in zip(self.names, self.salarie, self.position):
+                nsp_row = num + ',' + str(sal) + ',' + pos + '\n'
                 nba_file.write(nsp_row)
 
+    def names_by_pos(self):
+        """
+        Returns a dictionary whose keys are the positions and values
+        are lists of the names corresponding to each position
+        """
+
+    def most_played_position(self):
+        """
+        Calls names_by_pos(self) method to have a dictionary whos keys are the
+        positions and values are lists of the
+        names corresponding to each position.
+
+        Uses that dictionary to create a new dictionary whose keys are
+        positions and the values are the length of lists
+        of the players for each position.
+        """
+
+
+def main():
+    """
+    Shortens calling methods in the class TransformData()
+    """
+    transd = TransformData()
+    transd.record_per_row()
+
+
 if __name__ == '__main__':
-    td = TransformData()
-    td.record_per_row()
+    main()
