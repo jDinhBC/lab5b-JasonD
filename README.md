@@ -62,5 +62,5 @@ def most_played_position(self):
 * Assign variable input to Call the method names_by_pos for the dictionary.
 * Instantiate a new dictionary named numposdict.
 * Iterate through input and Iteration variable will be key.
-  * each loop Assign key to new key in numposdict, value will be length of the list of the value at key of input.
+  * each loop will assign key to new key in numposdict, value will be length of the list of the value at key of input.
 * return numposdict
