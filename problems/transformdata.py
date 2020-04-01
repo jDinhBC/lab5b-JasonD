@@ -83,35 +83,35 @@ class TransformData():
             posnamedict[pos].sort()
         return posnamedict
 
+    @classmethod
+    def most_played_position(cls):
+        """
+        Uses dictionary created from names_by_pos to create a new dictionary
+        whose keys are positions and the values are the length of lists
+        of the players for each position.
+        input = dictionary
+            key = position
+            value = list of names
+        returns dictionary
+            key = positions
+            value = length of lists of names
+        """
+        inputdata = TransformData().names_by_pos()
+        numposdict = {}
+        for key in inputdata:
+            numposdict[key] = len(inputdata[key])
+        return numposdict
 
-def most_played_position():
-    """
-    Uses dictionary created from names_by_pos to create a new dictionary
-    whose keys are positions and the values are the length of lists
-    of the players for each position.
-    input = dictionary
-        key = position
-        value = list of names
-    returns dictionary
-        key = positions
-        value = length of lists of names
-    """
-    inputdata = TransformData().names_by_pos()
-    numposdict = {}
-    for key in inputdata:
-        numposdict[key] = len(inputdata[key])
-    return numposdict
-
-
-def main():
-    """
-    Shortens calling methods in the class TransformData()
-    """
-    transd = TransformData()
-    transd.record_per_row()
-    transd.names_by_pos()
-    most_played_position()
+    @classmethod
+    def main(cls):
+        """
+        Shortens calling methods in the class TransformData()
+        """
+        transd = TransformData()
+        transd.record_per_row()
+        transd.names_by_pos()
+        transd.most_played_position()
 
 
 if __name__ == '__main__':
-    main()
+    TransformData().main()
